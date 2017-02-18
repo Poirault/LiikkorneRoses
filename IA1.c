@@ -49,6 +49,17 @@ int main(int argc, char **argv) {
             // On récupère les cellules qui nous appartiennent
             infl_client_get_my_cells(client, &my_cells, &n_cells);
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             matrice M;
             M=(int**)malloc(w*sizeof(int*));
             for(q=0;q<w;q++){
@@ -66,8 +77,19 @@ int main(int argc, char **argv) {
             }
             for(q=0;q<h;q++){
             	for(s=0;s<w;s++){
-            		if(infl_cell_get_owner (infl_field_get_cell(field, q, s))
-					P[q][s]
+            		if(infl_cell_get_owner (infl_field_get_cell(field, q, s))==moi){
+						P[q][s]=1;
+					}
+					else{
+						P[q][s]=0;
+					}
+				}
+			}
+			
+/*On a les deux matrices de jeu dans le code ci présent 0 pas à nous, 1 à nous. M matrice de valeur et P matrice de possession*/
+            	
+            	
+            	
             	
             	
             	
