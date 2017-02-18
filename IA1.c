@@ -1,4 +1,4 @@
-
+#include "IA1.h"
 #include <influence-client.h>
 
 #include <stdio.h>
@@ -12,6 +12,17 @@ typedef struct coord{
 } coord;
 
 typedef int** matrice;
+
+void attak(x,y,a_x,a_y){
+	infl_client_attack(client, x, y, a_x, a_y);
+	printf("Attaque (%d, %d) -> (%d, %d)\n", x, y, a_x, a_y);
+}
+
+
+void placement(x,y,val){
+	infl_client_add_units(client, infl_field_get_cell(field, x, y), val);
+}
+
 
 int main(int argc, char **argv) {
     InflClient *client;
@@ -80,13 +91,16 @@ int main(int argc, char **argv) {
             		if(infl_cell_get_owner (infl_field_get_cell(field, q, s))==moi){
 						P[q][s]=1;
 					}
+					if(infl_cell_get_owner (infl_field_get_cell(field, q, s))==lui){
+						P[q][s]=2;
+					}
 					else{
 						P[q][s]=0;
 					}
 				}
 			}
 			
-/*On a les deux matrices de jeu dans le code ci présent 0 pas à nous, 1 à nous. M matrice de valeur et P matrice de possession*/
+/*On a les deux matrices de jeu dans le code ci présent 0 pas à nous, 1 à nous. M matrice de valeur (0=neutre) et P matrice de possession*/
             	
             	
             	
